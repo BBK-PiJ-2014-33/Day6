@@ -65,7 +65,7 @@ public class Matrix
                 {
                     if (myNewColumnValues.charAt(i)==',')
                     {
-                        elementValue = Integer.parseInt(myNewColumnValues.substring(previousSeparatorPosition,i));
+                        elementValue = Integer.parseInt(myNewColumnValues.substring(previousSeparatorPosition, i));
                         previousSeparatorPosition=i+1;
                         setElement(count,myColumnDimension,elementValue);
                         count = count+1;
@@ -91,5 +91,40 @@ public class Matrix
                 }
             }
             return count;
+        }
+        @Override
+        public String toString()
+        {
+            String myString = "[";
+            for(int i=0; i<MatrixDimension1; i++)
+            {
+                for(int y=0; y<MatrixDimension2;y++)
+                {
+                    myString = myString + myArray [i] [y];
+                    if (y!=MatrixDimension2-1)
+                    {
+                        myString = myString + ",";
+                    }
+                }
+                if (i!=MatrixDimension1-1)
+                {
+                    myString = myString + ";";
+                }
+            }
+            myString = myString + "]";
+            return myString;
+        }
+        public void prettyPrint()
+        {
+            for(int i=0; i<MatrixDimension1; i++)
+            {
+                for(int y=0; y<MatrixDimension2;y++)
+                {
+                    System.out.print(myArray [i] [y]);
+                    System.out.print('\t');
+                }
+                System.out.println("");
+            }
+            System.out.print("");
         }
 	}
