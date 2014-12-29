@@ -26,37 +26,70 @@ public class Matrix
 			} 
 		public void setRow (int myRowDimension, String myNewRowValues)
 			{
-                //check first that there are enough columns in matrix
-                int count=0;
                 int elementValue = 0;
+                //check first that there are enough columns in matrix
                 //count number of elements in the string
-                for (int i = 0; i<myNewRowValues.length();i++)
-                {
-                    if (myNewRowValues.charAt(i)==',')
-                    {
-                        count = count +1;
-                    }
-                }
+                int count=getNumberOfItemsInString(myNewRowValues, ',');
+
                 if (myRowDimension<MatrixDimension1 && count+1 == MatrixDimension2)
                 {
                    count = 0;
-                    int previousSemicolonPosition=0;
+                    int previousSeparatorPosition=0;
                    for (int i = 0; i<myNewRowValues.length();i++)
                     {
                         if (myNewRowValues.charAt(i)==',')
                         {
-                            elementValue = Integer.parseInt(myNewRowValues.substring(previousSemicolonPosition,i));
-                            previousSemicolonPosition=i+1;
+                            elementValue = Integer.parseInt(myNewRowValues.substring(previousSeparatorPosition,i));
+                            previousSeparatorPosition=i+1;
                             setElement(myRowDimension,count,elementValue);
                             count = count+1;
                         }
                         else if (i==myNewRowValues.length()-1)
                         {
-                            elementValue = Integer.parseInt(myNewRowValues.substring(previousSemicolonPosition));
+                            elementValue = Integer.parseInt(myNewRowValues.substring(previousSeparatorPosition));
                             setElement(myRowDimension,count,elementValue);
                         }
                     }
 
                 }
-			} 
+			}
+        public void setColumn (int myColumnDimension, String myNewColumnValues)
+        {
+            int elementValue = 0;
+            int count=getNumberOfItemsInString(myNewColumnValues, ',');
+            if (count+1==MatrixDimension1 && myColumnDimension < MatrixDimension2)
+            {
+                count = 0;
+                int previousSeparatorPosition=0;
+                for (int i = 0; i<myNewColumnValues.length();i++)
+                {
+                    if (myNewColumnValues.charAt(i)==',')
+                    {
+                        elementValue = Integer.parseInt(myNewColumnValues.substring(previousSeparatorPosition,i));
+                        previousSeparatorPosition=i+1;
+                        setElement(count,myColumnDimension,elementValue);
+                        count = count+1;
+                    }
+                    else if (i==myNewColumnValues.length()-1)
+                    {
+                        elementValue = Integer.parseInt(myNewColumnValues.substring(previousSeparatorPosition));
+                        setElement(count,myColumnDimension,elementValue);
+                    }
+                }
+
+            }
+
+        }
+        private int getNumberOfItemsInString(String myString, Character mySeparator)
+        {
+            int count=0;
+            for (int i = 0; i<myString.length();i++)
+            {
+                if (myString.charAt(i)== mySeparator)
+                {
+                    count = count +1;
+                }
+            }
+            return count;
+        }
 	}
