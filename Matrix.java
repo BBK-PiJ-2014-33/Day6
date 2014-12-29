@@ -114,17 +114,32 @@ public class Matrix
             myString = myString + "]";
             return myString;
         }
-        public void prettyPrint()
-        {
-            for(int i=0; i<MatrixDimension1; i++)
-            {
-                for(int y=0; y<MatrixDimension2;y++)
-                {
-                    System.out.print(myArray [i] [y]);
+        public void prettyPrint() {
+            for (int i = 0; i < MatrixDimension1; i++) {
+                for (int y = 0; y < MatrixDimension2; y++) {
+                    System.out.print(myArray[i][y]);
                     System.out.print('\t');
                 }
                 System.out.println("");
             }
             System.out.print("");
         }
+        public void setMatrix (String myStringMatrix)
+        {
+            int count = 0;
+            int semicolonIndex=0;
+            String mySubstring = "";
+            count = getNumberOfItemsInString(myStringMatrix,';')+1;
+            for (int i =0; i<count-1; i++)
+            {
+                semicolonIndex = myStringMatrix.indexOf(';');
+                mySubstring = myStringMatrix.substring(0,semicolonIndex);
+                setRow(i,mySubstring);
+                myStringMatrix = myStringMatrix.substring(semicolonIndex+1);
+            }
+            setRow(count-1,myStringMatrix);
+
+        }
+
+
 	}
