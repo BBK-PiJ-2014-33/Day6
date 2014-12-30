@@ -141,5 +141,25 @@ public class Matrix
 
         }
 
+        public void checkMyMatrix()
+        {
+            MatrixChecker myMatrixChecker = new MatrixChecker();
+            if (myMatrixChecker.isSymmetrical(this.myArray))
+            {
+                System.out.println("This matrix is symmetrical");
+            }
+            else
+            {
+                System.out.println("This matrix is not symmetrical");
+            }
 
+            if (myMatrixChecker.isTriangular(this.myArray))
+            {
+                System.out.println("This matrix is triangular");
+            }
+            else
+            {
+                System.out.println("This matrix is not triangular");
+            }
+        }
 	}

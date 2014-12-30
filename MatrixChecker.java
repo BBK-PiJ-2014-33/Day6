@@ -32,4 +32,20 @@ public class MatrixChecker
 
         return  checkResult;
     }
+    public boolean isTriangular( int [] [] myArray)
+    {
+        Boolean checkResult = true;
+        for(int i =0; i<myArray.length; i++)
+        {
+            for (int n = 0; n < myArray[0].length; n++)
+            {
+                if(myArray[i][n]!=0 && i>n)
+                {
+                    checkResult=false;
+                }
+            }
+        }
+        return  checkResult;
+    }
+
 }
