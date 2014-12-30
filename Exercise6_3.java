@@ -10,5 +10,8 @@ public class Exercise6_3 {
         //myArrayString = myMatrix.toString();
         //myMatrix.prettyPrint();
         //myMatrix.setMatrix("1,2,3;4,5,6;7,8,9");
+
+
+
     }
 }
