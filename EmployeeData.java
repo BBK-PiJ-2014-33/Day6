@@ -65,7 +65,7 @@ public class EmployeeData {
     }
     public void printEmployees ()
     {   int nextItem = findNextIndex();
-        for (int i =0; i<nextItem; i++)
+        for (int i =0; i<nextItem-1; i++)
         {
             if(EmployeeName[i].charAt(0)=='S' || !((EmployeeID[i]%2)>0))
             {
